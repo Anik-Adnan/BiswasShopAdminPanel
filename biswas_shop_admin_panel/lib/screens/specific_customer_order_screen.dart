@@ -1,4 +1,6 @@
 
+import 'package:biswas_shop_admin_panel/model/order-model.dart';
+import 'package:biswas_shop_admin_panel/screens/check_single_order_screen.dart';
 import 'package:biswas_shop_admin_panel/utils/app_constant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,7 +16,7 @@ class SpecificCustomerOrderScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order Id {$customerName}'),
+        title: Text('Customer Orders'),
       ),
       body: FutureBuilder(
         future: FirebaseFirestore.instance
@@ -53,22 +55,45 @@ class SpecificCustomerOrderScreen extends StatelessWidget{
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 final data = snapshot.data!.docs[index];
+                OrderModel orderModel = OrderModel(
+                  categoryId: data['categoryId'],
+                  categoryName: data['categoryName'],
+                  createdAt: data['createdAt'],
+                  customerAddress: data['customerAddress'],
+                  customerDeviceToken: data['customerDeviceToken'],
+                  customerId: data['customerId'],
+                  customerName: data['customerName'],
+                  customerPhone: data['customerPhone'],
+                  deliveryTime: data['deliveryTime'],
+                  fullPrice: data['fullPrice'],
+                  isSale: data['isSale'],
+                  productDescription: data['productDescription'],
+                  productId: data['productId'],
+                  productImages: data['productImages'],
+                  productName: data['productName'],
+                  productQuantity: data['productQuantity'],
+                  productTotalPrice: data['productTotalPrice'],
+                  salePrice: data['salePrice'],
+                  status: data['status'],
+                  updatedAt: data['updatedAt'],
+                );
 
 
                 return Card(
                   elevation: 5,
                   child: ListTile(
                     onTap: () => Get.to(
-                          () => SpecificCustomerOrderScreen(
-                          docId: snapshot.data!.docs[index]['uId'],
-                          customerName: snapshot.data!.docs[index]['customerName']),
+                          () => CheckSingleOrderScreen(
+                            docId: docId,
+                            orderModel: orderModel,
+                          ),
                     ),
 
                     leading: CircleAvatar(
                       backgroundColor: AppConstant.appSecondaryColor,
                       child: Text(data['customerNamer'][0],style: TextStyle(fontWeight: FontWeight.bold),),
                     ),
-                    title: Text(data['customerName']),
+                    title: Text("${data['productName']}\n${data['productId']}"),
                     subtitle: Text(data['customerPhone']),
                     trailing: Icon(Icons.edit),
                   ),
