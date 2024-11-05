@@ -25,7 +25,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
       appBar: AppBar(
         title: Obx(() {
           return Text(
-              'Users (${_getUserCount.userCount.toString()})');
+              'All User(${_getUserCount.userCount.toString()})');
         }),
         backgroundColor: AppConstant.appMainColor,
       ),
@@ -67,7 +67,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
 
                 UserModel userModel = UserModel(
                   uId: data['uId'],
-                  userName: data['username'],
+                  userName: data['userName'],
                   email: data['email'],
                   phone: data['phone'],
                   userImg: data['userImg'],

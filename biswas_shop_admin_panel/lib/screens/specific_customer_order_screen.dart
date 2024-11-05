@@ -86,14 +86,14 @@ class SpecificCustomerOrderScreen extends StatelessWidget{
                   child: ListTile(
                     onTap: () => Get.to(
                           () => CheckSingleOrderScreen(
-                            docId: docId,
+                            docId: snapshot.data!.docs[index].id,
                             orderModel: orderModel,
                           ),
                     ),
 
                     leading: CircleAvatar(
                       backgroundColor: AppConstant.appSecondaryColor,
-                      child: Text(data['customerNamer'][0],style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text(data['customerName'][0],style: TextStyle(fontWeight: FontWeight.bold),),
                     ),
                     title: Text("${data['productName']}\n${data['productId']}"),
                     subtitle: Text(data['customerPhone']),

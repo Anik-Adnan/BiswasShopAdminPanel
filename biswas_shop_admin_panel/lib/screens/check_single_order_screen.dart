@@ -12,22 +12,22 @@ class CheckSingleOrderScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Confirmed orders"),
+        title: Text("Confirme orders"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(orderModel.productName),
+            child: Text("Product Name : "+orderModel.productName),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(orderModel.productTotalPrice.toString()),
+            child: Text("Product Price : "+orderModel.productTotalPrice.toString()),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('x' + orderModel.productQuantity.toString()),
+            child: Text('Product quantity : x' + orderModel.productQuantity.toString()),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -36,33 +36,47 @@ class CheckSingleOrderScreen extends StatelessWidget{
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 50.0,
-                foregroundImage: NetworkImage(orderModel.productImages[0]),
-              ),
-              CircleAvatar(
-                radius: 50.0,
-                foregroundImage: NetworkImage(orderModel.productImages[1]),
-              )
+              // show images
+              showImages(orderModel),
             ],
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(orderModel.customerName),
+            child: Text("Customer Name: "+orderModel.customerName),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(orderModel.customerPhone),
+            child: Text("Customer Phone : "+orderModel.customerPhone),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(orderModel.customerAddress),
+            child: Text("Customer Address : "+orderModel.customerAddress),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(orderModel.customerId),
+            child: Text("Customer ID :"+orderModel.customerId),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget showImages(OrderModel orderModel){
+    var images = orderModel.productImages;
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: images.map((image){
+          return Padding(
+            padding: EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              radius: 50.0,
+              foregroundImage: NetworkImage(image),
+            ),
+          );
+        }).toList(),
       ),
     );
   }
