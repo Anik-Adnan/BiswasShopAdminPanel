@@ -1,6 +1,7 @@
 
 
 import 'package:biswas_shop_admin_panel/screens/all_orders_screen.dart';
+import 'package:biswas_shop_admin_panel/screens/all_products_screens.dart';
 import 'package:biswas_shop_admin_panel/screens/all_users_Screens.dart';
 import 'package:biswas_shop_admin_panel/utils/app_constant.dart';
 import 'package:flutter/material.dart';
@@ -75,6 +76,9 @@ class _DrawerWidgetState extends State<DrawerWidget>{
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text("Products",style: TextStyle(fontWeight: FontWeight.bold),),
                 leading: Icon(Icons.production_quantity_limits),
+                onTap: (){
+                  Get.to(()=> AllProductsScreen());
+                },
               )
           ),
           Padding(
