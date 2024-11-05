@@ -83,7 +83,6 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
                     ),
                     title: Text(data['customerName']),
                     subtitle: Text(data['customerPhone']),
-                    trailing: Icon(Icons.edit),
                   ),
                 );
               },

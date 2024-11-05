@@ -104,7 +104,6 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                     ),
                     title: Text(userModel.userName),
                     subtitle: Text(userModel.email),
-                    trailing: Icon(Icons.edit),
                   ),
                 );
               },
