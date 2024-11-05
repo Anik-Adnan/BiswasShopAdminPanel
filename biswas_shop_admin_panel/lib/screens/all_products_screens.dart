@@ -2,6 +2,7 @@
 
 import 'package:biswas_shop_admin_panel/controllers/count_all_products_controller.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
+import 'package:biswas_shop_admin_panel/screens/single_product_screen.dart';
 import 'package:biswas_shop_admin_panel/screens/specific_customer_order_screen.dart';
 import 'package:biswas_shop_admin_panel/utils/app_constant.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -11,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AllProductsScreen extends StatefulWidget {
-  const AllProductsScreen({super.key});
+  const AllProductsScreen({super.key,});
 
   @override
   State<AllProductsScreen> createState() => _AllProductsScreenState();
@@ -87,9 +88,10 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                   elevation: 5,
                   child: ListTile(
                     onTap: () => Get.to(
-                          () => SpecificCustomerOrderScreen(
-                          docId: snapshot.data!.docs[index]['uId'],
-                          customerName: snapshot.data!.docs[index]['customerName']),
+                          () => SingleProductScreen(
+                            docId: data.id,
+                            productModel: productModel,
+                          ),
                     ),
 
                     leading: data['productImages'] != null  ?
@@ -109,6 +111,8 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                     ),
                     title: Text(data['productName']),
                     subtitle: Text("Sale Price: "+data['salePrice']+" tk"),
+                    trailing: Icon(Icons.keyboard_arrow_right,
+                    size: 30.0,),
                   ),
                 );
               },
