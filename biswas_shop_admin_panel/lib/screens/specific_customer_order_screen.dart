@@ -99,13 +99,14 @@ class SpecificCustomerOrderScreen extends StatelessWidget{
                     subtitle: Text(data['customerPhone']),
                     trailing: InkWell(
                       onTap: (){
-                        showBottomSheet(
+                        showDeliveryDetails(
                           userDocId: docId,
                           orderModel: orderModel,
                           orderDocId: orderDocId,
                         );
+
                       },
-                        child: Icon(Icons.edit)),
+                        child: Icon(Icons.more_vert)),
                   ),
                 );
               },
@@ -118,66 +119,69 @@ class SpecificCustomerOrderScreen extends StatelessWidget{
     );
 
   }
-  void showBottomSheet({
+
+  void showDeliveryDetails({
     required String userDocId,
     required OrderModel orderModel,
     required String orderDocId,
   }) {
-    Get.bottomSheet(
-      Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
+    Get.dialog(
+      AlertDialog(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        title: Text('Update Delivery Status'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
+            Text('Select the delivery status'),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(Colors.red),
+                    ),
                     onPressed: () async {
                       await FirebaseFirestore.instance
                           .collection('orders')
                           .doc(userDocId)
                           .collection('confirmOrders')
                           .doc(orderDocId)
-                          .update(
-                        {
-                          'status': false,
-                        },
-                      );
+                          .update({'status': false});
+                      Get.back(); // Close the dialog
                     },
-                    child: Text('Pending'),
+                    child: Text('Pending',style: TextStyle(color: Colors.black),),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                      onPressed: () async {
-                        await FirebaseFirestore.instance
-                            .collection('orders')
-                            .doc(userDocId)
-                            .collection('confirmOrders')
-                            .doc(orderDocId)
-                            .update(
-                          {
-                            'status': true,
-                          },
-                        );
-                      },
-                      child: Text('Delivered')),
-                )
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(Colors.green),
+                    ),
+                    onPressed: () async {
+                      await FirebaseFirestore.instance
+                          .collection('orders')
+                          .doc(userDocId)
+                          .collection('confirmOrders')
+                          .doc(orderDocId)
+                          .update({'status': true});
+                      Get.back(); // Close the dialog
+                    },
+                    child: Text('Delivered',style: TextStyle(color: Colors.black),),
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),
     );
   }
+
 
 
 
