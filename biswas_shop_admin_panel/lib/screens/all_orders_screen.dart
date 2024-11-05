@@ -27,7 +27,7 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
       appBar: AppBar(
         title: Obx(() {
           return Text(
-              'Orders (${_getUserCount.userCount.toString()})');
+              'All User Orders (${_getUserCount.userCount.toString()})');
         }),
         backgroundColor: AppConstant.appMainColor,
       ),
@@ -79,7 +79,7 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
 
                     leading: CircleAvatar(
                       backgroundColor: AppConstant.appSecondaryColor,
-                      child: Text(data['customerNamer'][0],style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text(data['customerName'][0],style: TextStyle(fontWeight: FontWeight.bold),),
                     ),
                     title: Text(data['customerName']),
                     subtitle: Text(data['customerPhone']),

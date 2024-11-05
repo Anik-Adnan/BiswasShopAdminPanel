@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.biswasshoppingbd">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="biswas_shop_admin_panel"
         android:name="${applicationName}"

@@ -39,10 +39,46 @@
               "client_type": 3
             },
             {
-              "client_id": "679771843332-r0t414rnvkendn4oicjitimirboejvav.apps.googleusercontent.com",
+              "client_id": "679771843332-8k63bsc165e0m806sk621heabbid21ag.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.biswasShoppingBd"
+                "bundle_id": "com.example.adminPanel"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679771843332:android:1f53d69a51e76764bc7e51",
+        "android_client_info": {
+          "package_name": "com.biswas.BiswasShoppingBD"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679771843332-74ov3hq0lj522e93ku0ilouuhee92a4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiWpYU2qvdxf1JQ8ZSjXs8n3PSTlilOH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679771843332-74ov3hq0lj522e93ku0ilouuhee92a4i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "679771843332-8k63bsc165e0m806sk621heabbid21ag.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.adminPanel"
               }
             }
           ]
@@ -75,10 +111,10 @@
               "client_type": 3
             },
             {
-              "client_id": "679771843332-r0t414rnvkendn4oicjitimirboejvav.apps.googleusercontent.com",
+              "client_id": "679771843332-8k63bsc165e0m806sk621heabbid21ag.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.biswasShoppingBd"
+                "bundle_id": "com.example.adminPanel"
               }
             }
           ]

@@ -1,5 +1,6 @@
 
 
+import 'package:biswas_shop_admin_panel/widgets/drawer_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,8 @@ class _MainScreenState extends State<MainScreen>{
       appBar: AppBar(
         title: Text("Admin Screen"),
       ),
+      drawer: DrawerWidget(),
+
     );
   }
 

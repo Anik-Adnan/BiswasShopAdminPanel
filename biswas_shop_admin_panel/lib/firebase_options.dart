@@ -42,17 +42,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyBxLhzYriVT5bmQulhJBVbTMrBQttSgKTw',
-    appId: '1:679771843332:web:99205853d78bb577bc7e51',
+    appId: '1:679771843332:web:03d237439e472beabc7e51',
     messagingSenderId: '679771843332',
     projectId: 'biswasshoppingbd-5c83b',
     authDomain: 'biswasshoppingbd-5c83b.firebaseapp.com',
     storageBucket: 'biswasshoppingbd-5c83b.firebasestorage.app',
-    measurementId: 'G-ZL76FHW72E',
+    measurementId: 'G-XGD1XMH5FG',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAiWpYU2qvdxf1JQ8ZSjXs8n3PSTlilOH8',
-    appId: '1:679771843332:android:1c5e696e03c6db75bc7e51',
+    appId: '1:679771843332:android:d45e8b5eb9670006bc7e51',
     messagingSenderId: '679771843332',
     projectId: 'biswasshoppingbd-5c83b',
     storageBucket: 'biswasshoppingbd-5c83b.firebasestorage.app',
@@ -89,4 +89,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'biswasshoppingbd-5c83b.firebasestorage.app',
     measurementId: 'G-XGD1XMH5FG',
   );
+
 }
