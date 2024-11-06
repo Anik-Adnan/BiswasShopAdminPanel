@@ -31,7 +31,7 @@ class CheckSingleOrderScreen extends StatelessWidget{
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(orderModel.productDescription),
+            child: Text("Prooduct Info : "+orderModel.productDescription.toString().trim()),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
