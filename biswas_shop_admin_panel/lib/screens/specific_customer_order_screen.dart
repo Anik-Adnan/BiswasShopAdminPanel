@@ -93,7 +93,7 @@ class SpecificCustomerOrderScreen extends StatelessWidget{
 
                     leading: CircleAvatar(
                       backgroundColor: AppConstant.appSecondaryColor,
-                      child: Text(data['customerName'][0],style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text(data['customerName'][0].toString().toUpperCase(),style: TextStyle(fontWeight: FontWeight.bold),),
                     ),
                     title: Text("${data['productName']}\n${data['productId']}"),
                     subtitle: Text(data['customerPhone']),

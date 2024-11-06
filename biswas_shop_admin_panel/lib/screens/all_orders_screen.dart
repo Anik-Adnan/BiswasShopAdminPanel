@@ -79,7 +79,7 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
 
                     leading: CircleAvatar(
                       backgroundColor: AppConstant.appSecondaryColor,
-                      child: Text(data['customerName'][0],style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text(data['customerName'][0].toString().toUpperCase(),style: TextStyle(fontWeight: FontWeight.bold),),
                     ),
                     title: Text(data['customerName']),
                     subtitle: Text(data['customerPhone']),

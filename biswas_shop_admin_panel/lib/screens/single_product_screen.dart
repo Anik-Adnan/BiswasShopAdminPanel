@@ -1,68 +1,66 @@
 
 import 'package:biswas_shop_admin_panel/model/order-model.dart';
+import 'package:biswas_shop_admin_panel/model/product-model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CheckSingleOrderScreen extends StatelessWidget{
-  OrderModel orderModel;
+class SingleProductScreen extends StatelessWidget{
+  ProductModel productModel;
   String docId;
-  CheckSingleOrderScreen({super.key, required this.docId,required this.orderModel});
+  SingleProductScreen({super.key, required this.docId,required this.productModel});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Confirme orders"),
+        title: Text("Product"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Product Name : "+orderModel.productName),
+            child: Text("Product Name : "+productModel.productName),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Product Price : "+orderModel.productTotalPrice.toString()),
+            child: Text("Product ID: "+productModel.productId),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Product quantity : x' + orderModel.productQuantity.toString()),
+            child: Text("Product CategoryName : "+productModel.categoryName),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Prooduct Info : "+orderModel.productDescription.toString().trim()),
+            child: Text("Product CategoryID : "+productModel.categoryId),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Full Price : "+productModel.fullPrice.toString()),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Sale Price : ' + productModel.salePrice.toString()),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // show images
-              showImages(orderModel),
+              showImages(productModel),
             ],
           ),
+
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Customer Name: "+orderModel.customerName),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Customer Phone : "+orderModel.customerPhone),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Customer Address : "+orderModel.customerAddress),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Customer ID :"+orderModel.customerId),
+            child: Text("Customer Address : "+productModel.productDescription),
           ),
         ],
       ),
     );
   }
 
-  Widget showImages(OrderModel orderModel){
-    var images = orderModel.productImages;
+  Widget showImages(ProductModel productModel){
+    var images = productModel.productImages;
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
