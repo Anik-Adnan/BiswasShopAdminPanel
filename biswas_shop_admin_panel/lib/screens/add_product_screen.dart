@@ -8,6 +8,7 @@ import 'package:biswas_shop_admin_panel/controllers/count_all_products_controlle
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
 import 'package:biswas_shop_admin_panel/screens/single_product_screen.dart';
 import 'package:biswas_shop_admin_panel/utils/app_constant.dart';
+import 'package:biswas_shop_admin_panel/widgets/dropdown_category_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,81 +39,86 @@ class AddProductScreen extends StatelessWidget {
         title: const Text("Add Products"),
         backgroundColor: AppConstant.appMainColor,
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Select Images"),
-                  ElevatedButton(
-                      onPressed: (){
-                        addProductImagesController.showImagesPickerDialog();
-                      },
-                      child: Text("Select Images"),),
-                ],
+      body: SingleChildScrollView(
+        physics:BouncingScrollPhysics(),
+        child: Container(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Select Images"),
+                    ElevatedButton(
+                        onPressed: (){
+                          addProductImagesController.showImagesPickerDialog();
+                        },
+                        child: Text("Select Images"),),
+                  ],
+                ),
               ),
-            ),
-            //show Images
-            GetBuilder<ProductImagesController>(
-              init: ProductImagesController(),
-              builder: (imageController) {
-
-                return imageController.selectedIamges.length > 0 ?
-                Container(
-                  width: MediaQuery.of(context).size.width - 20,
-                  height: Get.height / 3.0,
-                  child: GridView.builder(
-                    itemCount: imageController.selectedIamges.length,
-                    physics: const BouncingScrollPhysics(),
-                    gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 10,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return Stack(
-                        children: [
-                          Image.file(
-                            File(addProductImagesController
-                                .selectedIamges[index].path),
-                            fit: BoxFit.cover,
-                            height: Get.height / 4,
-                            width: Get.width / 2,
-                          ),
-                          Positioned(
-                            right: 0,
-                            top: 0,
-                            child: InkWell(
-                              onTap: () {
-                                imageController.removeImages(index);
-                                print(imageController
-                                    .selectedIamges.length);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.red.shade700,
-                                  child: Icon(
-                                    Icons.close,
-                                    color: Colors.white,
+        
+              //show Images
+              GetBuilder<ProductImagesController>(
+                init: ProductImagesController(),
+                builder: (imageController) {
+        
+                  return imageController.selectedIamges.length > 0 ?
+                  Container(
+                    width: MediaQuery.of(context).size.width - 20,
+                    height: Get.height / 3.0,
+                    child: GridView.builder(
+                      itemCount: imageController.selectedIamges.length,
+                      physics: const BouncingScrollPhysics(),
+                      gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 20,
+                        crossAxisSpacing: 10,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Stack(
+                          children: [
+                            Image.file(
+                              File(addProductImagesController
+                                  .selectedIamges[index].path),
+                              fit: BoxFit.cover,
+                              height: Get.height / 4,
+                              width: Get.width / 2,
+                            ),
+                            Positioned(
+                              right: 0,
+                              top: 0,
+                              child: InkWell(
+                                onTap: () {
+                                  imageController.removeImages(index);
+                                  print(imageController
+                                      .selectedIamges.length);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.red.shade700,
+                                    child: Icon(
+                                      Icons.close,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                )
-                    : SizedBox.shrink();
-              },
-            ),
-          ],
+                          ],
+                        );
+                      },
+                    ),
+                  )
+                      : SizedBox.shrink();
+                },
+              ),
+              DropDownCategoryWidget(),
+            ],
+          ),
         ),
       ),
 
