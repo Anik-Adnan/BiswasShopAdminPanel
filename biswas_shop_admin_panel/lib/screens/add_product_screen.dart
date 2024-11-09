@@ -16,6 +16,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:material_text_fields/material_text_fields.dart';
+import 'package:material_text_fields/theme/material_text_field_theme.dart';
+import 'package:material_text_fields/utils/form_validation.dart';
 class AddProductScreen extends StatelessWidget {
   AddProductScreen({super.key});
 
@@ -24,6 +27,7 @@ class AddProductScreen extends StatelessWidget {
   CategoryDropDownController categoryDropDownController = Get.put(CategoryDropDownController());
   IsSaleController isSaleController = Get.put(IsSaleController());
 
+  TextEditingController productIdController = TextEditingController();
   TextEditingController productNameController = TextEditingController();
   TextEditingController salePriceController = TextEditingController();
   TextEditingController fullPriceController = TextEditingController();
@@ -142,6 +146,148 @@ class AddProductScreen extends StatelessWidget {
                   );
                 },
               ),
+              SizedBox(height: 20.0,),
+
+              // form
+              Container(
+                height: 65,
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                child: TextFormField(
+                  cursorColor: AppConstant.appMainColor,
+                  textInputAction: TextInputAction.next,
+                  controller: productIdController,
+                  decoration: InputDecoration(
+                    labelText: "Product Id",
+                    // labelStyle: TextStyle(color: AppConstant.appMainColor),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                    ),
+                    hintText: "Product ID",
+                    hintStyle: TextStyle(fontSize: 12.0),
+                    // enabledBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    //   borderSide: BorderSide(color: Colors.grey), // Outline border color when enabled
+                    // ),
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    //   borderSide: BorderSide(color: AppConstant.appMainColor), // Outline border color when focused
+                    // ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.grey), // Default outline border color
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 10.0,),
+              Container(
+                height: 65,
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                child: TextFormField(
+                  cursorColor: AppConstant.appMainColor,
+                  textInputAction: TextInputAction.next,
+                  controller: productNameController,
+                  decoration: InputDecoration(
+                    labelText: "Product Name",
+                    // labelStyle: TextStyle(color: Colors.black),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                    ),
+                    hintText: "Product Name",
+                    hintStyle: TextStyle(fontSize: 12.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                      // borderSide: BorderSide(color: Colors.black)
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.0,),
+
+              Obx(
+                  (){
+                    return isSaleController.isSale.value ?
+                    Container(
+                      height: 65,
+                      margin: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: TextFormField(
+                        cursorColor: AppConstant.appMainColor,
+                        textInputAction: TextInputAction.next,
+                        controller: salePriceController,
+                        decoration: InputDecoration(
+                          labelText: "Sale Price",
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 10.0,
+                          ),
+                          hintText: "Sale Price",
+                          hintStyle: TextStyle(fontSize: 12.0),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                        : SizedBox.shrink();
+                  }
+              ),
+
+              SizedBox(height: 10.0,),
+              Container(
+                height: 65,
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                child: TextFormField(
+                  cursorColor: AppConstant.appMainColor,
+                  textInputAction: TextInputAction.next,
+                  controller: fullPriceController,
+                  decoration: InputDecoration(
+                    labelText: "Full Price",
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                    ),
+                    hintText: "Full Price",
+                    hintStyle: TextStyle(fontSize: 12.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.0,),
+              Container(
+                height: 65,
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                child: TextFormField(
+                  cursorColor: AppConstant.appMainColor,
+                  textInputAction: TextInputAction.next,
+                  controller: productDescriptionController,
+                  decoration: InputDecoration(
+                    labelText: "Product Descriptions",
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                    ),
+                    hintText: "Product Descriptions",
+                    hintStyle: TextStyle(fontSize: 12.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              
+              ElevatedButton(
+                  onPressed: (){},
+                  child: Text("Upload"),
+              ),
+
             ],
           ),
         ),
