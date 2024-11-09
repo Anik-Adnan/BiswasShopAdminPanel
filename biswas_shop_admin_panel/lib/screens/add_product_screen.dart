@@ -3,6 +3,7 @@
 
 import 'dart:io';
 
+import 'package:biswas_shop_admin_panel/controllers/category_dropdown_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/product_images_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/count_all_products_controller.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
@@ -17,12 +18,9 @@ import 'package:get/get.dart';
 class AddProductScreen extends StatelessWidget {
   AddProductScreen({super.key});
 
-  ProductImagesController addProductImagesController =
-  Get.put(ProductImagesController());
+  ProductImagesController addProductImagesController = Get.put(ProductImagesController());
 
-  //
-  // CategoryDropDownController categoryDropDownController =
-  // Get.put(CategoryDropDownController());
+  CategoryDropDownController categoryDropDownController = Get.put(CategoryDropDownController());
   //
   // IsSaleController isSaleController = Get.put(IsSaleController());
 
