@@ -9,13 +9,13 @@ class CategoryDropDownController extends GetxController{
   @override
   void onInit() {
     super.onInit();
-
+    fetchCategories();
   }
 
   Future<void> fetchCategories() async {
     try {
       QuerySnapshot<Map<String, dynamic>> querySnapshot =
-      await FirebaseFirestore.instance.collection('categories').get();
+      await FirebaseFirestore.instance.collection('categoris').get();
 
       List<Map<String, dynamic>> categoriesList = [];
 
@@ -29,7 +29,7 @@ class CategoryDropDownController extends GetxController{
       });
 
       categories.value = categoriesList;
-      print(categories);
+      // print(categories);
       update();
     } catch (e) {
       print("Error fetching categories: $e");
@@ -43,7 +43,7 @@ class CategoryDropDownController extends GetxController{
       // Access Firestore collection and document
       DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
           .instance
-          .collection('categories')
+          .collection('categoris')
           .doc(categoryId)
           .get();
 
@@ -63,21 +63,21 @@ class CategoryDropDownController extends GetxController{
 //set selected category
   void setSelectedCategory(String? categoryId) {
     selectedCategoryId = categoryId?.obs;
-    print('selectedCategoryId $selectedCategoryId');
+    // print('selectedCategoryId $selectedCategoryId');
     update();
   }
 
   // set categoryName
   void setSelectedCategoryName(String? categoryName) {
     selectedCategoryName = categoryName?.obs;
-    print('selectedCategoryName $selectedCategoryName');
+    // print('selectedCategoryName $selectedCategoryName');
     update();
   }
 
   // set old value
   void setOldValue(String? categoryId) {
     selectedCategoryId = categoryId?.obs;
-    print('selectedCategoryId $selectedCategoryId');
+    // print('selectedCategoryId $selectedCategoryId');
     update();
   }
 
