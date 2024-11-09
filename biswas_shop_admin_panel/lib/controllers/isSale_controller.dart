@@ -5,7 +5,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 class IsSaleController extends GetxController{
   RxBool isSale = false.obs;
 
-  void toogleIsSale(bool value){
+  void toggleIsSale(bool value){
     isSale.value = value;
     update();
   }

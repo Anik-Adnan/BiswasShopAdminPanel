@@ -51,9 +51,7 @@ class DropDownCategoryWidget extends StatelessWidget{
                           categoryDropDownController.setSelectedCategoryName(categoryName);
                           // print(categoryName);
                          },
-                      hint:  Text(
-                        'Select a Category',
-                      ),
+                      hint:  Text('Select a Category',style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,fontSize: 18.0 )),
                       isExpanded: true,
                       elevation: 10,
                       underline: const SizedBox.shrink(),

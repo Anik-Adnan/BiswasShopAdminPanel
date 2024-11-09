@@ -4,6 +4,7 @@
 import 'dart:io';
 
 import 'package:biswas_shop_admin_panel/controllers/category_dropdown_controller.dart';
+import 'package:biswas_shop_admin_panel/controllers/isSale_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/product_images_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/count_all_products_controller.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
@@ -21,8 +22,7 @@ class AddProductScreen extends StatelessWidget {
   ProductImagesController addProductImagesController = Get.put(ProductImagesController());
 
   CategoryDropDownController categoryDropDownController = Get.put(CategoryDropDownController());
-  //
-  // IsSaleController isSaleController = Get.put(IsSaleController());
+  IsSaleController isSaleController = Get.put(IsSaleController());
 
   TextEditingController productNameController = TextEditingController();
   TextEditingController salePriceController = TextEditingController();
@@ -34,7 +34,7 @@ class AddProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Products"),
+        title: const Text("Add Products",style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,fontSize: 18.0 )),
         backgroundColor: AppConstant.appMainColor,
       ),
       body: SingleChildScrollView(
@@ -47,12 +47,12 @@ class AddProductScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Select Images"),
+                    Text("Select Images",style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,fontSize: 18.0 )),
                     ElevatedButton(
                         onPressed: (){
                           addProductImagesController.showImagesPickerDialog();
                         },
-                        child: Text("Select Images"),),
+                        child: Text("Select Images",style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,fontSize: 18.0 )),),
                   ],
                 ),
               ),
@@ -114,7 +114,34 @@ class AddProductScreen extends StatelessWidget {
                       : SizedBox.shrink();
                 },
               ),
+
+              // drop down widget
               DropDownCategoryWidget(),
+              //isSale
+              GetBuilder<IsSaleController>(
+                init: IsSaleController(),
+                builder: (isSaleController) {
+                  return Card(
+                    elevation: 10,
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Is Sale",style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,fontSize: 18.0 ),),
+                          Switch(
+                            value: isSaleController.isSale.value,
+                            activeColor: AppConstant.appSecondaryColor,
+                            onChanged: (value) {
+                              isSaleController.toggleIsSale(value);
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ),
