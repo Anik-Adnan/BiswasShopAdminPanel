@@ -1,7 +1,7 @@
 
 import 'package:uuid/uuid.dart';
 
-class GenerateId{
+class GenerateIds{
   String generateProductId(){
     String formatedProductId;
     String uuid = const Uuid().v4();
