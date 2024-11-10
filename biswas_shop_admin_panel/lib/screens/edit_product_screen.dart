@@ -45,35 +45,38 @@ class _EditProductControllerState extends State<EditProductScreen>{
                             crossAxisSpacing: 2,
                           ),
                           itemBuilder: (BuildContext context, int index) {
-                            return Stack(
-                              children: [
-                                CachedNetworkImage(
-                                  imageUrl: editProductControler.images[index],
-                                  fit: BoxFit.contain,
-                                  height: Get.height / 4,
-                                  width: Get.width / 2,
-                                  placeholder: (context,url) => Center(child: CupertinoActivityIndicator()),
-                                  errorWidget: (context,url,error) => Icon(Icons.error),
-                                ),
-                                Positioned(
-                                  right: 10,
-                                  top: 0,
-                                  child: InkWell(
-                                    onTap: () {
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.red.shade700,
-                                        child: Icon(
-                                          Icons.close,
-                                          color: Colors.white,
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Stack(
+                                children: [
+                                  CachedNetworkImage(
+                                    imageUrl: editProductControler.images[index],
+                                    fit: BoxFit.cover,
+                                    height: Get.height / 4,
+                                    width: Get.width / 2,
+                                    placeholder: (context,url) => Center(child: CupertinoActivityIndicator()),
+                                    errorWidget: (context,url,error) => Icon(Icons.error),
+                                  ),
+                                  Positioned(
+                                    right: 2,
+                                    top: 2,
+                                    child: InkWell(
+                                      onTap: () {
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: CircleAvatar(
+                                          backgroundColor: Colors.red.shade700,
+                                          child: Icon(
+                                            Icons.close,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             );
                           },
                         ),
