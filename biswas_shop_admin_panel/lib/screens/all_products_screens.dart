@@ -3,6 +3,7 @@
 import 'package:biswas_shop_admin_panel/controllers/count_all_products_controller.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
 import 'package:biswas_shop_admin_panel/screens/add_product_screen.dart';
+import 'package:biswas_shop_admin_panel/screens/edit_product_screen.dart';
 import 'package:biswas_shop_admin_panel/screens/single_product_screen.dart';
 import 'package:biswas_shop_admin_panel/utils/app_constant.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -127,8 +128,13 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                     ),
                     title: Text(data['productName']),
                     subtitle: Text("Sale Price: "+data['salePrice']+" tk"),
-                    trailing: Icon(Icons.keyboard_arrow_right,
-                    size: 30.0,),
+                    trailing: GestureDetector(
+                      onTap: (){
+                        Get.to(()=> EditProductScreen(productModel: productModel));
+                      },
+                      child: Icon(Icons.edit,
+                      size: 30.0,color: Colors.black,),
+                    ),
                   ),
                 );
               },

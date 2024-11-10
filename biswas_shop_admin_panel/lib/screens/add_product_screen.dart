@@ -6,19 +6,13 @@ import 'dart:io';
 import 'package:biswas_shop_admin_panel/controllers/category_dropdown_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/isSale_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/product_images_controller.dart';
-import 'package:biswas_shop_admin_panel/controllers/count_all_products_controller.dart';
-import 'package:biswas_shop_admin_panel/model/product-model.dart';
-import 'package:biswas_shop_admin_panel/screens/single_product_screen.dart';
+import 'package:biswas_shop_admin_panel/services/generate-Ids.dart';
 import 'package:biswas_shop_admin_panel/utils/app_constant.dart';
 import 'package:biswas_shop_admin_panel/widgets/dropdown_category_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:material_text_fields/material_text_fields.dart';
-import 'package:material_text_fields/theme/material_text_field_theme.dart';
-import 'package:material_text_fields/utils/form_validation.dart';
+
 class AddProductScreen extends StatelessWidget {
   AddProductScreen({super.key});
 
@@ -216,6 +210,7 @@ class AddProductScreen extends StatelessWidget {
                       child: TextFormField(
                         cursorColor: AppConstant.appMainColor,
                         textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.number,
                         controller: salePriceController,
                         decoration: InputDecoration(
                           labelText: "Sale Price",
@@ -242,6 +237,7 @@ class AddProductScreen extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 10.0),
                 child: TextFormField(
                   cursorColor: AppConstant.appMainColor,
+                  keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
                   controller: fullPriceController,
                   decoration: InputDecoration(
@@ -261,17 +257,16 @@ class AddProductScreen extends StatelessWidget {
               ),
               SizedBox(height: 10.0,),
               Container(
-                height: 65,
+                height: 400,
                 margin: EdgeInsets.symmetric(horizontal: 10.0),
                 child: TextFormField(
                   cursorColor: AppConstant.appMainColor,
-                  textInputAction: TextInputAction.next,
+                  textInputAction: TextInputAction.newline,
                   controller: productDescriptionController,
+                  maxLines: null,
                   decoration: InputDecoration(
                     labelText: "Product Descriptions",
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                    ),
+                    contentPadding: EdgeInsets.all(10.0),
                     hintText: "Product Descriptions",
                     hintStyle: TextStyle(fontSize: 12.0),
                     border: OutlineInputBorder(
@@ -284,7 +279,10 @@ class AddProductScreen extends StatelessWidget {
               ),
               
               ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    String productId = GenerateIds().generateProductId();
+                    print(productId);
+                  },
                   child: Text("Upload"),
               ),
 
