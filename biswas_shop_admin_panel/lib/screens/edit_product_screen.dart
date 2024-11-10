@@ -4,6 +4,7 @@ import 'package:biswas_shop_admin_panel/model/product-model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
 class EditProductScreen extends StatefulWidget{
@@ -45,35 +46,43 @@ class _EditProductControllerState extends State<EditProductScreen>{
                             crossAxisSpacing: 2,
                           ),
                           itemBuilder: (BuildContext context, int index) {
-                            return Stack(
-                              children: [
-                                CachedNetworkImage(
-                                  imageUrl: editProductControler.images[index],
-                                  fit: BoxFit.contain,
-                                  height: Get.height / 4,
-                                  width: Get.width / 2,
-                                  placeholder: (context,url) => Center(child: CupertinoActivityIndicator()),
-                                  errorWidget: (context,url,error) => Icon(Icons.error),
-                                ),
-                                Positioned(
-                                  right: 10,
-                                  top: 0,
-                                  child: InkWell(
-                                    onTap: () {
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.red.shade700,
-                                        child: Icon(
-                                          Icons.close,
-                                          color: Colors.white,
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Stack(
+                                children: [
+                                  CachedNetworkImage(
+                                    imageUrl: editProductControler.images[index],
+                                    fit: BoxFit.cover,
+                                    height: Get.height / 4,
+                                    width: Get.width / 2,
+                                    placeholder: (context,url) => Center(child: CupertinoActivityIndicator()),
+                                    errorWidget: (context,url,error) => Icon(Icons.error),
+                                  ),
+                                  Positioned(
+                                    right: 2,
+                                    top: 2,
+                                    child: InkWell(
+                                      onTap: () async {
+                                        EasyLoading.show();
+                                        await editProductControler.deleteImagesFromStorage(editProductControler.images[index].toString());
+                                        await editProductControler.deleteImageFromFireStore(editProductControler.images[index].toString(), widget.productModel.productId.toString());
+
+                                        EasyLoading.dismiss();
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: CircleAvatar(
+                                          backgroundColor: Colors.red.shade700,
+                                          child: Icon(
+                                            Icons.close,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             );
                           },
                         ),

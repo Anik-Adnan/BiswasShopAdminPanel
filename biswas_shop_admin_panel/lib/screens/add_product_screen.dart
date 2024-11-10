@@ -84,8 +84,8 @@ class AddProductScreen extends StatelessWidget {
                               width: Get.width / 2,
                             ),
                             Positioned(
-                              right: 0,
-                              top: 0,
+                              right: 2,
+                              top: 2,
                               child: InkWell(
                                 onTap: () {
                                   imageController.removeImages(index);
