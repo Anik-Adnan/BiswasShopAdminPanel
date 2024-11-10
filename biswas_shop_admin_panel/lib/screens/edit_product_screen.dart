@@ -4,6 +4,7 @@ import 'package:biswas_shop_admin_panel/model/product-model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
 class EditProductScreen extends StatefulWidget{
@@ -61,7 +62,12 @@ class _EditProductControllerState extends State<EditProductScreen>{
                                     right: 2,
                                     top: 2,
                                     child: InkWell(
-                                      onTap: () {
+                                      onTap: () async {
+                                        EasyLoading.show();
+                                        await editProductControler.deleteImagesFromStorage(editProductControler.images[index].toString());
+                                        await editProductControler.deleteImageFromFireStore(editProductControler.images[index].toString(), widget.productModel.productId.toString());
+
+                                        EasyLoading.dismiss();
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.all(4.0),
