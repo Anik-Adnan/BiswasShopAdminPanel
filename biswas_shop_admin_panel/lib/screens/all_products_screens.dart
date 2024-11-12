@@ -1,5 +1,6 @@
 
 
+import 'package:biswas_shop_admin_panel/controllers/category_dropdown_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/count_all_products_controller.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
 import 'package:biswas_shop_admin_panel/screens/add_product_screen.dart';
@@ -130,6 +131,9 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                     subtitle: Text("Sale Price: "+data['salePrice']+" tk"),
                     trailing: GestureDetector(
                       onTap: (){
+                        // var editProdcutCategory = Get.put(CategoryDropDownController());
+                        // editProdcutCategory.setOldValue(productModel.categoryId);
+                        //
                         Get.to(()=> EditProductScreen(productModel: productModel));
                       },
                       child: Icon(Icons.edit,

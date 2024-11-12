@@ -1,6 +1,8 @@
 
+import 'package:biswas_shop_admin_panel/controllers/category_dropdown_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/edit_product_controller.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
+import 'package:biswas_shop_admin_panel/widgets/dropdown_category_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,6 +90,8 @@ class _EditProductControllerState extends State<EditProductScreen>{
                         ),
                       ),
                     ),
+                    SizedBox(height: 20.0,),
+                    DropDownCategoryWidget(),
                   ],
                 ),
               ),
