@@ -49,6 +49,7 @@ class DropDownCategoryWidget extends StatelessWidget{
                           categoryDropDownController.setSelectedCategory(selectedValue);
                           String? categoryName = await categoryDropDownController.getCategoryName(selectedValue);
                           categoryDropDownController.setSelectedCategoryName(categoryName);
+
                           // print(categoryName);
                          },
                       hint:  Text('Select a Category',style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,fontSize: 18.0 )),

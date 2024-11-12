@@ -34,19 +34,13 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
         }),
         backgroundColor: AppConstant.appMainColor,
         actions: [
-          GestureDetector(
-            onTap: ()=> Get.to(()=> AddProductScreen(),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(12.0),
 
-              child: Icon(Icons.add,
-              size: 30.0,
-              color: Colors.black,),
-
-            ),
-
-          )
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: ElevatedButton(
+              onPressed: (){Get.to(()=> AddProductScreen());},
+              child: Text("Add",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 16.0),),),
+          ),
         ],
       ),
 
@@ -131,9 +125,10 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                     subtitle: Text("Sale Price: "+data['salePrice']+" tk"),
                     trailing: GestureDetector(
                       onTap: (){
-                        // var editProdcutCategory = Get.put(CategoryDropDownController());
-                        // editProdcutCategory.setOldValue(productModel.categoryId);
-                        //
+
+                        final editProductCategoryController = Get.put(CategoryDropDownController());
+                        editProductCategoryController.setPreviousCategory(productModel.categoryId);
+
                         Get.to(()=> EditProductScreen(productModel: productModel));
                       },
                       child: Icon(Icons.edit,

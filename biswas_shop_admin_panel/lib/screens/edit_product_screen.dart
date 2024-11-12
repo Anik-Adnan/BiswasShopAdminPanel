@@ -20,6 +20,8 @@ class EditProductScreen extends StatefulWidget{
 }
 class _EditProductControllerState extends State<EditProductScreen>{
 
+  CategoryDropDownController categoryDropDownController = Get.put(CategoryDropDownController());
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EditProductController>(

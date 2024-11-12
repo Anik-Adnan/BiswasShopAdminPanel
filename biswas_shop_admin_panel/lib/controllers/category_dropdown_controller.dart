@@ -19,14 +19,24 @@ class CategoryDropDownController extends GetxController{
 
       List<Map<String, dynamic>> categoriesList = [];
 
-      querySnapshot.docs
-          .forEach((DocumentSnapshot<Map<String, dynamic>> document) {
+      for (int i = 0; i < querySnapshot.docs.length; i++) {
+        DocumentSnapshot<Map<String, dynamic>> document = querySnapshot.docs[i];
         categoriesList.add({
-          'categoryId': document.id,
+          'categoryId': document['categoryId'],
           'categoryName': document['categoryName'],
           'categoryImg': document['categoryImg'],
         });
-      });
+      };
+
+      // querySnapshot.docs
+      //     .forEach((DocumentSnapshot<Map<String, dynamic>> document) {
+      //   categoriesList.add({
+      //     'categoryId': document['categoryId'],
+      //     'categoryName': document['categoryName'],
+      //     'categoryImg': document['categoryImg'],
+      //   });
+      //   print("category ID"+document['categoryId']);
+      // });
 
       categories.value = categoriesList;
       // print(categories);
@@ -74,8 +84,8 @@ class CategoryDropDownController extends GetxController{
     update();
   }
 
-  // set old value
-  void setOldValue(String? categoryId) {
+  // set PreviousCategory
+  void setPreviousCategory(String? categoryId) {
     selectedCategoryId = categoryId?.obs;
     // print('selectedCategoryId $selectedCategoryId');
     update();

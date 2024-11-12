@@ -1,6 +1,7 @@
 
 import 'package:biswas_shop_admin_panel/model/order-model.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -71,7 +72,7 @@ class SingleProductScreen extends StatelessWidget{
             padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               radius: 50.0,
-              foregroundImage: NetworkImage(image),
+              foregroundImage: CachedNetworkImageProvider(image),
             ),
           );
         }).toList(),
