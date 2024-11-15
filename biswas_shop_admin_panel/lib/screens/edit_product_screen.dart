@@ -133,6 +133,7 @@ class _EditProductControllerState extends State<EditProductScreen>{
                                       categoryDropDownController.setSelectedCategory(selectedValue);
                                       String? categoryName = await categoryDropDownController.getCategoryName(selectedValue);
                                       categoryDropDownController.setSelectedCategoryName(categoryName);
+                                      // add something here
 
                                       // print(categoryName);
                                     },
