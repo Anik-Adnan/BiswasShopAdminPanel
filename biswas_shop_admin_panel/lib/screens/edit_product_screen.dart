@@ -1,7 +1,9 @@
 
 import 'package:biswas_shop_admin_panel/controllers/category_dropdown_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/edit_product_controller.dart';
+import 'package:biswas_shop_admin_panel/controllers/isSale_controller.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
+import 'package:biswas_shop_admin_panel/utils/app_constant.dart';
 import 'package:biswas_shop_admin_panel/widgets/dropdown_category_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -94,6 +96,30 @@ class _EditProductControllerState extends State<EditProductScreen>{
                     ),
                     SizedBox(height: 20.0,),
                     DropDownCategoryWidget(),
+                    GetBuilder<IsSaleController>(
+                      init: IsSaleController(),
+                      builder: (isSaleController) {
+                        return Card(
+                          elevation: 10,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Is Sale",style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,fontSize: 18.0 ),),
+                                Switch(
+                                  value: isSaleController.isSale.value,
+                                  activeColor: AppConstant.appSecondaryColor,
+                                  onChanged: (value) {
+                                    isSaleController.toggleIsSale(value);
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
 
                   ],
                 ),
