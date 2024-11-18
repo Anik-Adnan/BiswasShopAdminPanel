@@ -2,6 +2,7 @@
 
 import 'package:biswas_shop_admin_panel/controllers/category_dropdown_controller.dart';
 import 'package:biswas_shop_admin_panel/controllers/count_all_products_controller.dart';
+import 'package:biswas_shop_admin_panel/controllers/isSale_controller.dart';
 import 'package:biswas_shop_admin_panel/model/product-model.dart';
 import 'package:biswas_shop_admin_panel/screens/add_product_screen.dart';
 import 'package:biswas_shop_admin_panel/screens/edit_product_screen.dart';
@@ -23,6 +24,7 @@ class AllProductsScreen extends StatefulWidget {
 class _AllProductsScreenState extends State<AllProductsScreen> {
   final CountAllproductsController _getProductsCount =
   Get.put(CountAllproductsController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +130,8 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
 
                         final editProductCategoryController = Get.put(CategoryDropDownController());
                         editProductCategoryController.setPreviousCategory(productModel.categoryId);
+                        final isSaleController = Get.put(IsSaleController());
+                        isSaleController.setIsSaleOldVale(productModel.isSale);
 
                         Get.to(()=> EditProductScreen(productModel: productModel));
                       },
