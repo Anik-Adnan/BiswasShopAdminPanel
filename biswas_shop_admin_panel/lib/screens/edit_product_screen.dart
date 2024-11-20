@@ -35,7 +35,6 @@ class _EditProductControllerState extends State<EditProductScreen>{
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     productIdController.text = widget.productModel.productId;
     productNameController.text = widget.productModel.productName;
